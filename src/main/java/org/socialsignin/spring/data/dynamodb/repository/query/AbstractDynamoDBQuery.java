@@ -35,7 +35,7 @@ import org.springframework.data.repository.query.RepositoryQuery;
 /**
  * @author Michael Lavelle
  */
-public abstract class AbstractDynamoDBQuery<T, ID extends Serializable> implements RepositoryQuery {
+public abstract class AbstractDynamoDBQuery<T, ID> implements RepositoryQuery {
 
 	protected final DynamoDBOperations dynamoDBOperations;
 	private final DynamoDBQueryMethod<T, ID> method;
@@ -85,7 +85,7 @@ public abstract class AbstractDynamoDBQuery<T, ID extends Serializable> implemen
 		return query;
 	}
 
-	private interface QueryExecution<T, ID extends Serializable> {
+	private interface QueryExecution<T, ID> {
 		public Object execute(AbstractDynamoDBQuery<T, ID> query, Object[] values);
 	}
 
@@ -129,7 +129,7 @@ public abstract class AbstractDynamoDBQuery<T, ID extends Serializable> implemen
 			this.parameters = parameters;
 		}
 
-		private int scanThroughResults(Iterator<T> iterator, int resultsToScan) {
+		private int scanThroughResults(Iterator<T> iterator, long resultsToScan) {
 			int processed = 0;
 			while (iterator.hasNext() && processed < resultsToScan) {
 				iterator.next();
@@ -195,7 +195,7 @@ public abstract class AbstractDynamoDBQuery<T, ID extends Serializable> implemen
 			this.parameters = parameters;
 		}
 
-		private int scanThroughResults(Iterator<T> iterator, int resultsToScan) {
+		private int scanThroughResults(Iterator<T> iterator, long resultsToScan) {
 			int processed = 0;
 			while (iterator.hasNext() && processed < resultsToScan) {
 				iterator.next();

@@ -33,7 +33,7 @@ import org.springframework.util.ReflectionUtils.MethodCallback;
  *
  * @author Michael Lavelle
  */
-public class FieldAndGetterReflectionEntityInformation<T, ID extends Serializable> extends AbstractEntityInformation<T, ID> {
+public class FieldAndGetterReflectionEntityInformation<T, ID> extends AbstractEntityInformation<T, ID> {
 
 	private static final Class<Id> DEFAULT_ID_ANNOTATION = Id.class;
 

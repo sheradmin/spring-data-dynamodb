@@ -38,7 +38,7 @@ import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 /**
  * @author Michael Lavelle
  */
-public class DynamoDBEntityWithHashKeyOnlyCriteria<T, ID extends Serializable> extends AbstractDynamoDBQueryCriteria<T, ID> {
+public class DynamoDBEntityWithHashKeyOnlyCriteria<T, ID> extends AbstractDynamoDBQueryCriteria<T, ID> {
 
 	private DynamoDBEntityInformation<T, ID> entityInformation;
 

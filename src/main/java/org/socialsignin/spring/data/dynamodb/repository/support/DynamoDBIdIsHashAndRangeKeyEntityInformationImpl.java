@@ -33,7 +33,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMarshaller;
  *
  * @author Michael Lavelle
  */
-public class DynamoDBIdIsHashAndRangeKeyEntityInformationImpl<T, ID extends Serializable> extends
+public class DynamoDBIdIsHashAndRangeKeyEntityInformationImpl<T, ID> extends
 		ReflectionEntityInformation<T, ID> implements DynamoDBIdIsHashAndRangeKeyEntityInformation<T, ID> {
 
 	private DynamoDBHashAndRangeKeyExtractingEntityMetadata<T, ID> metadata;

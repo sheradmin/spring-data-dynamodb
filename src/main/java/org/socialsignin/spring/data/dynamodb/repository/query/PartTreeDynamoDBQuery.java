@@ -27,7 +27,7 @@ import org.springframework.data.repository.query.parser.PartTree;
 /**
  * @author Michael Lavelle
  */
-public class PartTreeDynamoDBQuery<T, ID extends Serializable> extends AbstractDynamoDBQuery<T, ID> implements RepositoryQuery {
+public class PartTreeDynamoDBQuery<T, ID> extends AbstractDynamoDBQuery<T, ID> implements RepositoryQuery {
 
 	private DynamoDBQueryMethod<T, ID> queryMethod;
 	private final Parameters<?, ?> parameters;

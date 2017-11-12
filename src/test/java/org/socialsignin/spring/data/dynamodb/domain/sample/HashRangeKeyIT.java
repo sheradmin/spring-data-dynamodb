@@ -18,28 +18,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"classpath:META-INF/context/HashRangeKeyIT-context.xml"})
 public class HashRangeKeyIT {
 
-	@Autowired
-	PlaylistRepository playlistRepository;
+    @Autowired
+    PlaylistRepository playlistRepository;
 
-	@Test
-	public void runCrudOperations() {
-		final String displayName = "displayName" + UUID.randomUUID().toString();
-		final String userName = "userName-" + UUID.randomUUID().toString();
-		final String playlistName = "playlistName-" + UUID.randomUUID().toString();
-		PlaylistId id = new PlaylistId(userName, playlistName);
+    @Test
+    public void runCrudOperations() {
+        final String displayName = "displayName" + UUID.randomUUID().toString();
+        final String userName = "userName-" + UUID.randomUUID().toString();
+        final String playlistName = "playlistName-" + UUID.randomUUID().toString();
+        PlaylistId id = new PlaylistId(userName, playlistName);
 
-		Playlist actual = playlistRepository.findOne(id);
-		assertNull(actual);
+        Playlist actual = playlistRepository.findById(id).orElse(null);
+        assertNull(actual);
 
-		Playlist playlist = new Playlist(id);
-		playlist.setDisplayName(displayName);
+        Playlist playlist = new Playlist(id);
+        playlist.setDisplayName(displayName);
 
-		playlistRepository.save(playlist);
+        playlistRepository.save(playlist);
 
-		actual = playlistRepository.findOne(id);
-		assertNotNull(actual);
-		assertEquals(displayName, actual.getDisplayName());
-		assertEquals(id.getPlaylistName(), actual.getPlaylistName());
-		assertEquals(id.getUserName(), actual.getUserName());
-	}
+        actual = playlistRepository.findById(id).orElse(null);
+        assertNotNull(actual);
+        assertEquals(displayName, actual.getDisplayName());
+        assertEquals(id.getPlaylistName(), actual.getPlaylistName());
+        assertEquals(id.getUserName(), actual.getUserName());
+    }
 }

@@ -16,10 +16,7 @@
 package org.socialsignin.spring.data.dynamodb.repository.support;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.socialsignin.spring.data.dynamodb.core.DynamoDBOperations;
 import org.socialsignin.spring.data.dynamodb.repository.DynamoDBCrudRepository;
@@ -40,7 +37,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.KeyPair;
  * @param <ID>
  *            the type of the entity's identifier
  */
-public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
+public class SimpleDynamoDBCrudRepository<T, ID>
 		implements DynamoDBCrudRepository<T, ID> {
 
 	protected DynamoDBEntityInformation<T, ID> entityInformation;
@@ -66,6 +63,17 @@ public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
 	}
 
 	@Override
+	public Optional<T> findById(ID id) {
+		if (entityInformation.isRangeKeyAware()) {
+			return Optional.ofNullable(dynamoDBOperations.load(domainType,
+					entityInformation.getHashKey(id),
+					entityInformation.getRangeKey(id)));
+		} else {
+			return Optional.ofNullable(dynamoDBOperations.load(domainType,
+					entityInformation.getHashKey(id)));
+		}
+	}
+
 	public T findOne(ID id) {
 		if (entityInformation.isRangeKeyAware()) {
 			return dynamoDBOperations.load(domainType,
@@ -78,7 +86,7 @@ public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<T> findAll(Iterable<ID> ids) {
+	public Iterable<T> findAllById(Iterable<ID> ids) {
 		Map<Class<?>, List<KeyPair>> keyPairsMap = new HashMap<Class<?>, List<KeyPair>>();
 		List<KeyPair> keyPairs = new ArrayList<KeyPair>();
 		for (ID id : ids) {
@@ -132,13 +140,13 @@ public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
 	}
 
 	@Override
-	public <S extends T> Iterable<S> save(Iterable<S> entities) {
+	public <S extends T> Iterable<S> saveAll(Iterable<S> entities) {
 		dynamoDBOperations.batchSave(entities);
 		return entities;
 	}
 
 	@Override
-	public boolean exists(ID id) {
+	public boolean existsById(ID id) {
 
 		Assert.notNull(id, "The given id must not be null!");
 		return findOne(id) != null;
@@ -175,7 +183,7 @@ public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
 	}
 
 	@Override
-	public void delete(ID id) {
+	public void deleteById(ID id) {
 
 		Assert.notNull(id, "The given id must not be null!");
 
@@ -194,7 +202,7 @@ public class SimpleDynamoDBCrudRepository<T, ID extends Serializable>
 	}
 
 	@Override
-	public void delete(Iterable<? extends T> entities) {
+	public void deleteAll(Iterable<? extends T> entities) {
 
 		Assert.notNull(entities, "The given Iterable of entities not be null!");
 		dynamoDBOperations.batchDelete(entities);

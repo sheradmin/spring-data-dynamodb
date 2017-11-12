@@ -23,7 +23,7 @@ import org.springframework.util.ReflectionUtils;
 /**
  * @author Michael Lavelle
  */
-public class CompositeIdHashAndRangeKeyExtractor<ID extends Serializable, H> implements HashAndRangeKeyExtractor<ID, H> {
+public class CompositeIdHashAndRangeKeyExtractor<ID, H> implements HashAndRangeKeyExtractor<ID, H> {
 
 	private DynamoDBHashAndRangeKeyMethodExtractor<ID> hashAndRangeKeyMethodExtractor;
 

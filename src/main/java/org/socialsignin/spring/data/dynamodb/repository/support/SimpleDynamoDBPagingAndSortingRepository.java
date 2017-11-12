@@ -54,7 +54,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
  * @param <ID>
  *            the type of the entity's identifier
  */
-public class SimpleDynamoDBPagingAndSortingRepository<T, ID extends Serializable> extends SimpleDynamoDBCrudRepository<T, ID>
+public class SimpleDynamoDBPagingAndSortingRepository<T, ID> extends SimpleDynamoDBCrudRepository<T, ID>
 		implements DynamoDBPagingAndSortingRepository<T, ID> {
 
 	public SimpleDynamoDBPagingAndSortingRepository(DynamoDBEntityInformation<T, ID> entityInformation,
@@ -78,8 +78,8 @@ public class SimpleDynamoDBPagingAndSortingRepository<T, ID extends Serializable
 
 		DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 		// Scan to the end of the page after the requested page
-		int scanTo = pageable.getOffset() + (2 * pageable.getPageSize());
-		scanExpression.setLimit(scanTo);
+		Long scanTo = pageable.getOffset() + (2 * pageable.getPageSize());
+		scanExpression.setLimit(scanTo.intValue());
 		PaginatedScanList<T> paginatedScanList = dynamoDBOperations.scan(domainType, scanExpression);
 		Iterator<T> iterator = paginatedScanList.iterator();
 		int processedCount = 0;
@@ -100,7 +100,7 @@ public class SimpleDynamoDBPagingAndSortingRepository<T, ID extends Serializable
 
 	}
 
-	private int scanThroughResults(Iterator<T> paginatedScanListIterator, int resultsToScan) {
+	private int scanThroughResults(Iterator<T> paginatedScanListIterator, long resultsToScan) {
 		int processed = 0;
 		while (paginatedScanListIterator.hasNext() && processed < resultsToScan) {
 			paginatedScanListIterator.next();

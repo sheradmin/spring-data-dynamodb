@@ -31,7 +31,7 @@ import org.springframework.data.repository.core.EntityInformation;
  * 
  * @author Michael Lavelle
  */
-public interface DynamoDBEntityInformation<T, ID extends Serializable> extends EntityInformation<T, ID>,
+public interface DynamoDBEntityInformation<T, ID> extends EntityInformation<T, ID>,
 		DynamoDBHashKeyExtractingEntityMetadata<T> {
 
 	boolean isRangeKeyAware();

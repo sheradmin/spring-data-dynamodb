@@ -26,7 +26,7 @@ import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 /**
  * @author Michael Lavelle
  */
-public interface DynamoDBQueryCriteria<T, ID extends Serializable> {
+public interface DynamoDBQueryCriteria<T, ID> {
 
 	public DynamoDBQueryCriteria<T, ID> withSingleValueCriteria(String propertyName, ComparisonOperator comparisonOperator,
 			Object value, Class<?> type);

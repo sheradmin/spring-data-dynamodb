@@ -53,7 +53,7 @@ import com.amazonaws.services.dynamodbv2.model.Select;
 /**
  * @author Michael Lavelle
  */
-public abstract class AbstractDynamoDBQueryCriteria<T, ID extends Serializable> implements DynamoDBQueryCriteria<T, ID> {
+public abstract class AbstractDynamoDBQueryCriteria<T, ID> implements DynamoDBQueryCriteria<T, ID> {
 
 	protected Class<T> clazz;
 	private DynamoDBEntityInformation<T, ID> entityInformation;

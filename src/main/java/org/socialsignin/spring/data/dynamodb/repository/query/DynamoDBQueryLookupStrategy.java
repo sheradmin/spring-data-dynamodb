@@ -68,7 +68,7 @@ public class DynamoDBQueryLookupStrategy {
 			return createDynamoDBQuery(method, metadata, factory, metadata.getDomainType(), metadata.getIdType(), namedQueries);
 		}
 
-		protected abstract <T, ID extends Serializable> RepositoryQuery createDynamoDBQuery(Method method,
+		protected abstract <T, ID> RepositoryQuery createDynamoDBQuery(Method method,
 				RepositoryMetadata metadata, ProjectionFactory factory, Class<T> entityClass, Class<ID> idClass, NamedQueries namedQueries);
 	}
 
@@ -85,7 +85,7 @@ public class DynamoDBQueryLookupStrategy {
 		}
 
 		@Override
-		protected <T, ID extends Serializable> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
+		protected <T, ID> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
 				Class<T> entityClass, Class<ID> idClass, NamedQueries namedQueries) {
 			try {
 				return new PartTreeDynamoDBQuery<T, ID>(dynamoDBOperations, new DynamoDBQueryMethod<T, ID>(method, metadata, factory));
@@ -111,7 +111,7 @@ public class DynamoDBQueryLookupStrategy {
 		}
 
 		@Override
-		protected <T, ID extends Serializable> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
+		protected <T, ID> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
 				Class<T> entityClass, Class<ID> idClass, NamedQueries namedQueries) {
 			throw new UnsupportedOperationException("Declared Queries not supported at this time");
 		}
@@ -138,7 +138,7 @@ public class DynamoDBQueryLookupStrategy {
 		}
 
 		@Override
-		protected <T, ID extends Serializable> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
+		protected <T, ID> RepositoryQuery createDynamoDBQuery(Method method, RepositoryMetadata metadata, ProjectionFactory factory,
 				Class<T> entityClass, Class<ID> idClass, NamedQueries namedQueries) {
 			try {
 				return strategy.createDynamoDBQuery(method, metadata, factory, entityClass, idClass, namedQueries);

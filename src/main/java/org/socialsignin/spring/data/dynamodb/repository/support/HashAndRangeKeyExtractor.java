@@ -20,7 +20,7 @@ import java.io.Serializable;
 /**
  * @author Michael Lavelle
  */
-public interface HashAndRangeKeyExtractor<ID extends Serializable, H> extends HashKeyExtractor<ID, H> {
+public interface HashAndRangeKeyExtractor<ID, H> extends HashKeyExtractor<ID, H> {
 
 	public Object getRangeKey(ID id);
 

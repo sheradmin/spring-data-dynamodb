@@ -20,6 +20,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 import org.springframework.data.mapping.context.AbstractMappingContext;
+import org.springframework.data.mapping.model.Property;
 import org.springframework.data.mapping.model.SimpleTypeHolder;
 import org.springframework.data.util.TypeInformation;
 
@@ -57,11 +58,16 @@ public class DynamoDBMappingContext extends AbstractMappingContext<DynamoDBPersi
 	 * org.springframework.data.mapping.MutablePersistentEntity,
 	 * org.springframework.data.mapping.SimpleTypeHolder)
 	 */
-	@Override
+	/*@Override
 	protected DynamoDBPersistentProperty createPersistentProperty(Field field, PropertyDescriptor descriptor,
 			DynamoDBPersistentEntityImpl<?> owner, SimpleTypeHolder simpleTypeHolder) {
 		return new DynamoDBPersistentPropertyImpl(field, descriptor, owner, simpleTypeHolder);
 
+	}*/
+
+	@Override
+	protected DynamoDBPersistentProperty createPersistentProperty(Property property, DynamoDBPersistentEntityImpl<?> dynamoDBPersistentProperties, SimpleTypeHolder simpleTypeHolder) {
+		return new DynamoDBPersistentPropertyImpl(property, dynamoDBPersistentProperties, simpleTypeHolder);
 	}
 
 	/*
@@ -92,5 +98,4 @@ public class DynamoDBMappingContext extends AbstractMappingContext<DynamoDBPersi
 		}
 		return type.getType().isAnnotationPresent(DynamoDBTable.class) || (hasHashKey && hasRangeKey);
 	}
-
 }

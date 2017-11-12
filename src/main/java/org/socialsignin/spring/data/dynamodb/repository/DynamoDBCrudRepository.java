@@ -27,6 +27,6 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @author Michael Lavelle
  */
 @NoRepositoryBean
-public interface DynamoDBCrudRepository<T, ID extends Serializable> extends CrudRepository<T, ID> {
+public interface DynamoDBCrudRepository<T, ID> extends CrudRepository<T, ID> {
 
 }

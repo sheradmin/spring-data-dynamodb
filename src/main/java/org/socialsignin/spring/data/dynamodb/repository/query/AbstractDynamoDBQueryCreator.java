@@ -39,7 +39,7 @@ import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
 /**
  * @author Michael Lavelle
  */
-public abstract class AbstractDynamoDBQueryCreator<T, ID extends Serializable,R> extends
+public abstract class AbstractDynamoDBQueryCreator<T, ID,R> extends
 		AbstractQueryCreator<Query<R>, DynamoDBQueryCriteria<T, ID>> {
 
 	private DynamoDBEntityInformation<T, ID> entityMetadata;

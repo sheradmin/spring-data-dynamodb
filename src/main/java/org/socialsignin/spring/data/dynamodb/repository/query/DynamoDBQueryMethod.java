@@ -29,7 +29,7 @@ import org.springframework.data.repository.query.QueryMethod;
 /**
  * @author Michael Lavelle
  */
-public class DynamoDBQueryMethod<T, ID extends Serializable> extends QueryMethod {
+public class DynamoDBQueryMethod<T, ID> extends QueryMethod {
 
 	private final Method method;
 	private final boolean scanEnabledForRepository;

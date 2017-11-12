@@ -101,7 +101,7 @@ public class SimpleDynamoDBPagingAndSortingRepositoryUnitTest {
 	@Test(expected = EmptyResultDataAccessException.class)
 	public void throwsExceptionIfEntityWithOnlyHashKeyToDeleteDoesNotExist() {
 
-		repoForEntityWithOnlyHashKey.delete(4711L);
+		repoForEntityWithOnlyHashKey.deleteById(4711L);
 	}
 
 	@Test
@@ -128,6 +128,6 @@ public class SimpleDynamoDBPagingAndSortingRepositoryUnitTest {
 		playlistId.setUserName("someUser");
 		playlistId.setPlaylistName("somePlaylistName");
 
-		repoForEntityWithHashAndRangeKey.delete(playlistId);
+		repoForEntityWithHashAndRangeKey.deleteById(playlistId);
 	}
 }

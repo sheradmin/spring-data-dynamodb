@@ -101,7 +101,7 @@ public class SimpleDynamoDBCrudRepositoryUnitTest {
 	@Test(expected = EmptyResultDataAccessException.class)
 	public void throwsExceptionIfEntityOnlyHashKeyToDeleteDoesNotExist() {
 
-		repoForEntityWithOnlyHashKey.delete(4711L);
+		repoForEntityWithOnlyHashKey.deleteById(4711L);
 	}
 
 	@Test
@@ -128,6 +128,6 @@ public class SimpleDynamoDBCrudRepositoryUnitTest {
 		playlistId.setUserName("someUser");
 		playlistId.setPlaylistName("somePlaylistName");
 
-		repoForEntityWithHashAndRangeKey.delete(playlistId);
+		repoForEntityWithHashAndRangeKey.deleteById(playlistId);
 	}
 }

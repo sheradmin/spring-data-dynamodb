@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.ParameterAccessor;
 import org.springframework.data.repository.query.parser.PartTree;
 
-public class DynamoDBCountQueryCreator<T,ID extends Serializable> extends AbstractDynamoDBQueryCreator<T, ID,Long> {
+public class DynamoDBCountQueryCreator<T,ID> extends AbstractDynamoDBQueryCreator<T, ID,Long> {
 
 	private boolean pageQuery;
 	

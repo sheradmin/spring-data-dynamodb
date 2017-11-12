@@ -48,7 +48,7 @@ import com.amazonaws.services.dynamodbv2.model.QueryRequest;
 /**
  * @author Michael Lavelle
  */
-public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID extends Serializable> extends AbstractDynamoDBQueryCriteria<T, ID> {
+public class DynamoDBEntityWithHashAndRangeKeyCriteria<T, ID> extends AbstractDynamoDBQueryCriteria<T, ID> {
 
 	private Object rangeKeyAttributeValue;
 	private Object rangeKeyPropertyValue;

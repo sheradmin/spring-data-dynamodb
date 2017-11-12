@@ -9,7 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.ParameterAccessor;
 import org.springframework.data.repository.query.parser.PartTree;
 
-public class DynamoDBQueryCreator<T,ID extends Serializable> extends AbstractDynamoDBQueryCreator<T, ID,T> {
+public class DynamoDBQueryCreator<T,ID> extends AbstractDynamoDBQueryCreator<T, ID,T> {
 
 	public DynamoDBQueryCreator(PartTree tree,
 			DynamoDBEntityInformation<T, ID> entityMetadata,

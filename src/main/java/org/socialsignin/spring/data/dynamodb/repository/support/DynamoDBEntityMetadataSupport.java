@@ -43,7 +43,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBVersionAttribute;
 /**
  * @author Michael Lavelle
  */
-public class DynamoDBEntityMetadataSupport<T, ID extends Serializable> implements DynamoDBHashKeyExtractingEntityMetadata<T> {
+public class DynamoDBEntityMetadataSupport<T, ID> implements DynamoDBHashKeyExtractingEntityMetadata<T> {
 
 	private final Class<T> domainType;
 	private boolean hasRangeKey;

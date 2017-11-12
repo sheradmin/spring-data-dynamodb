@@ -33,7 +33,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexRangeKey;
 /**
  * @author Michael Lavelle
  */
-public class DynamoDBHashAndRangeKeyExtractingEntityMetadataImpl<T, ID extends Serializable> extends
+public class DynamoDBHashAndRangeKeyExtractingEntityMetadataImpl<T, ID> extends
 		DynamoDBEntityMetadataSupport<T, ID> implements DynamoDBHashAndRangeKeyExtractingEntityMetadata<T, ID> {
 
 	private DynamoDBHashAndRangeKeyMethodExtractor<T> hashAndRangeKeyMethodExtractor;

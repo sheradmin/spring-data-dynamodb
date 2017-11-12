@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.derjust</groupId>
+    <groupId>com.github.sheradmin</groupId>
     <artifactId>spring-data-dynamodb</artifactId>
     <version>4.5.2-SNAPSHOT</version>
     <name>Spring Data DynamoDb</name>
     <description>Spring Data module providing support for DynamoDb repositories.</description>
-    <url>http://github.com/derjust/spring-data-dynamodb</url>
+    <url>http://github.com/sheradmin/spring-data-dynamodb</url>
 
     <licenses>
         <license>
@@ -16,10 +16,10 @@
     </licenses>
 
     <properties>
-        <spring.version>4.3.6.RELEASE</spring.version>
-        <spring-data.version>Ingalls-RELEASE</spring-data.version>
+        <spring.version>5.0.1.RELEASE</spring.version>
+        <spring-data.version>2.0.1.RELEASE</spring-data.version>
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-        <aws-java-sdk.version>1.11.93</aws-java-sdk.version>
+        <aws-java-sdk.version>1.11.228</aws-java-sdk.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
@@ -28,8 +28,8 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -43,10 +43,10 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
+                <artifactId>spring-data-commons</artifactId>
                 <version>${spring-data.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
             </dependency>
 
             <dependency>
